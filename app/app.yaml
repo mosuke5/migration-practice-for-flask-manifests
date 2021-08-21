@@ -148,7 +148,6 @@ kind: StatefulSet
 metadata:
   labels:
     app: sample-flask
-    template: sample-flask
   annotations:
     argocd.argoproj.io/hook: PreSync
   name: mysql
@@ -157,6 +156,7 @@ spec:
   selector:
     matchLabels:
       name: mysql
+  serviceName: $(DB_HOST)
   strategy:
     type: RollingUpdate
   template:
