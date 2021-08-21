@@ -156,7 +156,6 @@ spec:
   selector:
     matchLabels:
       name: mysql
-  serviceName: $(DB_HOST)
   updateStrategy:
     type: RollingUpdate
   template:
