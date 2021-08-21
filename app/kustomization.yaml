@@ -1,0 +1,19 @@
+resources:
+  - app.yaml
+  - job.yaml
+images:
+  - name: my-app
+    newName: image-registry.openshift-image-registry.svc:5000/mori-test/example
+    newTag: latest
+  - name: mysql
+    newName: image-registry.openshift-image-registry.svc:5000/openshift/mysql
+    newTag: 8.0-el8
+  - name: job
+    newName: image-registry.openshift-image-registry.svc:5000/mori-test/example
+    newTag: latest
+vars:
+  - name: DB_HOST
+    objref:
+      kind: Service
+      name: mysql
+      apiVersion: v1
