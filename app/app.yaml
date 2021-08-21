@@ -157,7 +157,7 @@ spec:
     matchLabels:
       name: mysql
   serviceName: $(DB_HOST)
-  strategy:
+  updateStrategy:
     type: RollingUpdate
   template:
     metadata:
