@@ -19,7 +19,7 @@ spec:
             - 'db/init.sh'
           env:
             - name: MYSQL_HOST
-              value: $(DB_HOST)
+              value: mysql
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
