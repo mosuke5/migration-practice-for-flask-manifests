@@ -61,7 +61,7 @@ spec:
       containers:
       - env:
         - name: DB_HOST
-          value: $(DB_HOST)
+          value: mysql
         - name: DB_DBNAME
           value: isuumo
         - name: DB_USER
@@ -153,6 +153,7 @@ metadata:
   name: mysql
 spec:
   replicas: 1
+  serviceName: mysql
   selector:
     matchLabels:
       name: mysql
