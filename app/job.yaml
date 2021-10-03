@@ -29,11 +29,24 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: database-user
-                  name: sample-flask
+                  name: job-secret
             - name: MYSQL_PASS
               valueFrom:
                 secretKeyRef:
                   key: database-password
-                  name: sample-flask
+                  name: job-secret
       restartPolicy: Never
   backoffLimit: 4
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    app: sample-flask
+    template: sample-flask
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+  name: job-secret
+stringData:
+  database-password: 1suc0n!
+  database-user: isucon
