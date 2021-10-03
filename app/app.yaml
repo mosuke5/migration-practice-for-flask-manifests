@@ -5,7 +5,6 @@ metadata:
     app: sample-flask
     template: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
   name: sample-flask
 stringData:
   database-password: 1suc0n!
@@ -103,7 +102,7 @@ metadata:
     app: sample-flask
     template: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-2"
   name: mysql
 stringData:
   database-name: isuumo
@@ -118,7 +117,7 @@ metadata:
     app: sample-flask
     template: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-2"
   name: mysql
 spec:
   ports:
@@ -134,7 +133,7 @@ metadata:
     app: sample-flask
     template: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-2"
   name: mysql
 spec:
   accessModes:
@@ -149,7 +148,7 @@ metadata:
   labels:
     app: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-2"
   name: mysql
 spec:
   replicas: 1
