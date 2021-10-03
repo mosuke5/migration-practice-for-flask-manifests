@@ -5,7 +5,6 @@ metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   template:
     spec:
@@ -14,9 +13,15 @@ spec:
           image: job:latest
           command:
             - '/bin/sh'
-          args:
             - '-c'
-            - 'db/init.sh'
+          args:
+            - |
+              if [ -z $MYSQL_SERVICE_HOSZT ]; then
+                echo "skip this job."
+                exit 0
+              fi
+
+              'db/init.sh'
           env:
             - name: MYSQL_HOST
               value: mysql
