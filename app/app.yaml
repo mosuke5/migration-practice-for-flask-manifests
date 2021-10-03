@@ -5,7 +5,6 @@ metadata:
     app: sample-flask
     template: sample-flask
   annotations:
-    argocd.argoproj.io/hook: PreSync
   name: sample-flask
 stringData:
   database-password: 1suc0n!
@@ -77,10 +76,10 @@ spec:
         name: sample-flask
         image: my-app:latest
         command:
-          - flask
-          - run
-          - '--host=0.0.0.0'
-          - '--port=1323'
+          - '/bin/sh'
+          - '-c'
+        args:
+          - 'db/init.sh && flask run --host=0.0.0.0 --port=1323'
         livenessProbe:
           httpGet:
             path: /healthcheck
@@ -102,8 +101,6 @@ metadata:
   labels:
     app: sample-flask
     template: sample-flask
-  annotations:
-    argocd.argoproj.io/hook: PreSync
   name: mysql
 stringData:
   database-name: isuumo
@@ -117,8 +114,6 @@ metadata:
   labels:
     app: sample-flask
     template: sample-flask
-  annotations:
-    argocd.argoproj.io/hook: PreSync
   name: mysql
 spec:
   ports:
@@ -133,8 +128,6 @@ metadata:
   labels:
     app: sample-flask
     template: sample-flask
-  annotations:
-    argocd.argoproj.io/hook: PreSync
   name: mysql
 spec:
   accessModes:
@@ -148,8 +141,6 @@ kind: StatefulSet
 metadata:
   labels:
     app: sample-flask
-  annotations:
-    argocd.argoproj.io/hook: PreSync
   name: mysql
 spec:
   replicas: 1
