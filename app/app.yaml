@@ -77,7 +77,7 @@ spec:
         image: my-app:latest
         command:
           - db/init.sh
-          - &&
+          - '&&'
           - flask
           - run
           - '--host=0.0.0.0'
