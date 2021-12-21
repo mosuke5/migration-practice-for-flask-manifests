@@ -46,7 +46,7 @@ metadata:
     template: sample-flask
   name: sample-flask
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: sample-flask
@@ -59,6 +59,8 @@ spec:
     spec:
       containers:
       - env:
+        - name: FOO
+          value: bar
         - name: DB_HOST
           value: mysql
         - name: DB_DBNAME
