@@ -46,7 +46,7 @@ metadata:
     template: sample-flask
   name: sample-flask
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: sample-flask
